@@ -15,10 +15,12 @@ import { UpdateComponent } from './update/update.component';
         UpdateComponent
     ],
     exports: [
-        ListComponent
+        MoviesComponent
     ],
     imports: [
         CommonModule
-    ]
+    ],
+    providers : [ListComponent]
+    
 })
 export class MoviesModule { }

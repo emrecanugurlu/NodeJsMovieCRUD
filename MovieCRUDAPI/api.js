@@ -17,7 +17,7 @@ mssql.connect(dbConfig, (err) => {
     }
 });
 
-app.get("/api/movies",(req, res)=>{
+app.get("/api/movies", (req, res)=>{
     const request = new mssql.Request();
 
     request.query('SELECT * FROM Movies', (err, result) => {
@@ -28,6 +28,28 @@ app.get("/api/movies",(req, res)=>{
             res.send(result.recordset);
         }
     });
+})
+
+app.post("/api/movie",async(req,res)=>{
+    try {
+        const {name, description, year, imdb} = req.body;
+        const request = new mssql.Request();
+
+        request.query(`INSERT INTO Movies (Name, Description, Year, Imdb) VALUES ('${name}', '${description}', '${year}', '${imdb}')`, (err, result) => {
+            if (err) {
+                console.log('Kayıtlar getirilirken bir hata oluştu:', err);
+                res.status(500).send('Kayıtlar getirilirken bir hata oluştu.');
+            } else {
+                res.send("true");
+            }
+        });
+
+        
+        
+
+    } catch (error) {
+        
+    }
 })
 
 

@@ -5,18 +5,21 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {MoviesModule} from "./movies/movies.module";
 import {HttpClientModule} from "@angular/common/http";
+import { CreateComponent } from './movies/create/create.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MoviesModule,
-    HttpClientModule
+    HttpClientModule,
+    MoviesModule
   ],
-  providers: [],
+  providers: [CreateComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

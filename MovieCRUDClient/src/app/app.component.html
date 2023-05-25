@@ -2,11 +2,8 @@
 <nav class="navbar navbar-dark bg-dark" data-bs-theme="dark">
   <div class="container-fluid" style="margin-left: 100px; margin-right: 100px">
     <a class="navbar-brand">Movie CRUD</a>
-    <form class="d-flex" role="search">
-      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success" type="submit">Search</button>
-    </form>
+    <button class="btn btn-success my-2 my-sm-0" type="submit" (click)="openCreateModel()">Create Movie</button>
   </div>
 </nav>
-<app-list></app-list>
+<app-movies></app-movies>
 </div>

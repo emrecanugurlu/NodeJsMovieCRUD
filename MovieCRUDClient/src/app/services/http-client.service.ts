@@ -13,5 +13,9 @@ export class HttpClientService {
   getMovies(){
     return this.http.get<Movie[]>(`${this.urlService.baseUrl}/movies`);
   }
+
+  postMovie({name,description,year,imdb}){
+    return this.http.post(`${this.urlService.baseUrl}/movie`, {name , description, year, imdb});
+  }
 }
 

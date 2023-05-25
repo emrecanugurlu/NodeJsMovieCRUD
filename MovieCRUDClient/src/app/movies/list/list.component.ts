@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {HttpClientService} from "../../services/http-client.service";
 import {Movie} from "../../models/movie_model";
 
@@ -7,13 +7,22 @@ import {Movie} from "../../models/movie_model";
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss']
 })
-export class ListComponent {
+export class ListComponent implements OnInit{
   movieList : Movie[];
   constructor(private httpClient : HttpClientService) {
-    httpClient.getMovies().subscribe((value) =>{
-      console.log("deneme")
+    
+  }
+  ngOnInit(): void {
+    this.initialMovies()
+  }
+
+  deleteMovie(){
+    
+  }
+
+  initialMovies(){
+    this.httpClient.getMovies().subscribe((value) =>{
       this.movieList = value
-      console.log(this.movieList[0])
     })
   }
 }

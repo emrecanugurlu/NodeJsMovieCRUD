@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import {HttpClientService} from "./services/http-client.service";
-import {Movie} from "./models/movie_model";
+import { CreateComponent } from './movies/create/create.component';
+declare var $ : any;
 
 @Component({
   selector: 'app-root',
@@ -8,7 +8,12 @@ import {Movie} from "./models/movie_model";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  constructor() {
-
+  constructor(private createComponent : CreateComponent) {
+    
   }
+
+  openCreateModel(){
+    this.createComponent.showCreateModal();
+  }
+
 }

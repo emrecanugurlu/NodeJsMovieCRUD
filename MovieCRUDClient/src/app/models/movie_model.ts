@@ -1,9 +1,7 @@
 export class Movie {
-  Id : string
+  Id : number
   Name : string
   Description : string
-  Imdb : number
-  Year : number
-  CreatedDate : string
-  UpdatedDate : string
+  Imdb : string
+  Year : string
 }
