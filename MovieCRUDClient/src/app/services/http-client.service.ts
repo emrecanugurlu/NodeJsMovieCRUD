@@ -17,5 +17,9 @@ export class HttpClientService {
   postMovie({name,description,year,imdb}){
     return this.http.post(`${this.urlService.baseUrl}/movie`, {name , description, year, imdb});
   }
+
+  deleteMovie(id:string){
+    return this.http.delete(`${this.urlService.baseUrl}/movies/${id}`);
+  }
 }
 

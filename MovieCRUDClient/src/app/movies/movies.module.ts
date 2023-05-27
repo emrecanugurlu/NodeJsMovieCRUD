@@ -4,6 +4,7 @@ import { MoviesComponent } from './movies.component';
 import { ListComponent } from './list/list.component';
 import { CreateComponent } from './create/create.component';
 import { UpdateComponent } from './update/update.component';
+import { DeleteComponent } from './delete/delete.component';
 
 
 
@@ -12,7 +13,8 @@ import { UpdateComponent } from './update/update.component';
         MoviesComponent,
         ListComponent,
         CreateComponent,
-        UpdateComponent
+        UpdateComponent,
+        DeleteComponent
     ],
     exports: [
         MoviesComponent
@@ -20,7 +22,7 @@ import { UpdateComponent } from './update/update.component';
     imports: [
         CommonModule
     ],
-    providers : [ListComponent]
+    providers : [ListComponent,DeleteComponent]
     
 })
 export class MoviesModule { }

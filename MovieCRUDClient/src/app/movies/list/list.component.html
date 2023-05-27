@@ -11,14 +11,14 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let movie of movieList">
+    <tr *ngFor="let movie of movieList; let i = index" (click) = "onRowClick(i)">
       <th scope="row">{{movie.Id}}</th>
       <td>{{movie.Name}}</td>
       <td>{{movie.Description}}</td>
       <td>{{movie.Year}}</td>
       <td>{{movie.Imdb}}</td>
       <td>
-        <button type="button" class="btn btn-danger" style="margin-right: 10px" (click)="deleteMovie()">
+        <button id="deleteButton" type="button" class="btn btn-danger" style="margin-right: 10px" (click)="deleteMovieButtonClick()">
           <i class="bi bi-trash"></i>
         </button>
         <button type="button" class="btn btn-warning">
@@ -31,3 +31,4 @@
 </div>
 
 <app-create></app-create>
+<app-delete (deleteModalClosed)="deleteModelClosed()"></app-delete>

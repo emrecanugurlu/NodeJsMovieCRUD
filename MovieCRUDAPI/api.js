@@ -44,12 +44,23 @@ app.post("/api/movie",async(req,res)=>{
             }
         });
 
-        
-        
-
     } catch (error) {
         
     }
+})
+
+app.delete("/api/movies/:id",(req,res)=>{
+    var movieId = parseInt(req.params.id);
+    const request = new mssql.Request();
+
+    request.query(`DELETE FROM Movies WHERE id = ${movieId};`, (err, result) => {
+        if (err) {
+            console.log('Film silinirken hata oluştu', err);
+            res.status(500).send('Film silinirken hata oluştu');
+        } else {
+            res.send("true");
+        }
+    });
 })
 
 

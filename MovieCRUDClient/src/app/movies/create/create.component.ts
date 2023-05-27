@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { HttpClientService } from 'src/app/services/http-client.service';
 import { ListComponent } from '../list/list.component';
-declare var $ : any
+import { MovieService } from 'src/app/services/movie.service';
+declare var $: any
 
 @Component({
   selector: 'app-create',
@@ -9,18 +9,21 @@ declare var $ : any
   styleUrls: ['./create.component.scss']
 })
 export class CreateComponent {
-  constructor(private httpClientService : HttpClientService,private listComponent : ListComponent){
-    
+  constructor(
+    private movieService: MovieService, 
+    private listComponent : ListComponent
+    ) {
+
   }
-  showCreateModal(){
+  showCreateModal() {
     $("#exampleModalCenter").modal('show')
   }
 
-  closeCreateModel(){
+  closeCreateModel() {
     $("#exampleModalCenter").modal('hide')
   }
 
-  saveMovie(){
+  saveMovie() {
 
     $("#SaveButton").html(`<div class="spinner-border spinner-border-sm" role="status"></div>`)
 
@@ -29,27 +32,19 @@ export class CreateComponent {
     var movieYear = $("#MovieForm #MovieYear").val();
     var movieImdb = $("#MovieForm #MovieImdb").val();
 
-
-    console.log("Tetiklendi")
-    this.httpClientService.postMovie(
-      { 
-        name : movieName,
-        description : movieDescription,
-        imdb: movieImdb,
-        year: movieYear
-      }
-      ).subscribe(
-      response => {
+    this.movieService.postMovie(
+      {
+        name: movieName,
+        description: movieDescription,
+        imdb : movieImdb,
+        year : movieYear
+      }).then((value)=>{
+        this.listComponent.initialMovies();
         this.closeCreateModel()
-        this.listComponent.initialMovies()
         $("#SaveButton").text(`Save`)
-        
-      },
-      error => {
+      }).catch((err) =>{
         $("#SaveButton").text(`Save`)
-        console.error('Hata:', error);
-      }
-      
-    );
+        console.error(err);
+      })
   }
 }
