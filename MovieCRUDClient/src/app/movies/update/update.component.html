@@ -1,1 +1,35 @@
-<p>update works!</p>
+<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Create Movie</h5>
+        </div>
+        <div class="modal-body">
+            <form id="MovieForm">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Movie Name</label>
+                  <input type="text" class="form-control" id="MovieName"  placeholder="Movie Name">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Description</label>
+                  <input type="text" class="form-control" id="MovieDescription" placeholder="Description" >
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Year</label>
+                    <input type="text" class="form-control" id="MovieYear" placeholder="Year">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Imdb</label>
+                    <input type="text" class="form-control" id="MovieImdb" placeholder="Imdb">
+                </div>
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeUpdateModal()">Close</button>
+          <button type="button" class="btn btn-primary" id="UpdateButton" (click)="updateMovie()">
+            Update 
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>

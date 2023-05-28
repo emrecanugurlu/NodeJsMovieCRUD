@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
+import { Movie } from '../models/movie_model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataTransitionService {
-  deleteMovieId : string
+  clickedMovie : Movie
   constructor() { }
 }

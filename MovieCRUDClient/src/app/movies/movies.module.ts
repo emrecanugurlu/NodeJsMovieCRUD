@@ -5,6 +5,7 @@ import { ListComponent } from './list/list.component';
 import { CreateComponent } from './create/create.component';
 import { UpdateComponent } from './update/update.component';
 import { DeleteComponent } from './delete/delete.component';
+import { DataTransitionService } from '../services/data-transition.service';
 
 
 
@@ -22,7 +23,7 @@ import { DeleteComponent } from './delete/delete.component';
     imports: [
         CommonModule
     ],
-    providers : [ListComponent,DeleteComponent]
+    providers : [ListComponent,DeleteComponent,UpdateComponent,DataTransitionService]
     
 })
 export class MoviesModule { }

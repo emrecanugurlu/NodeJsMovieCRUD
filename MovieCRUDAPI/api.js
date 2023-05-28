@@ -17,7 +17,7 @@ mssql.connect(dbConfig, (err) => {
     }
 });
 
-app.get("/api/movies", (req, res)=>{
+app.get("/api/movies", (req, res) => {
     const request = new mssql.Request();
 
     request.query('SELECT * FROM Movies', (err, result) => {
@@ -30,9 +30,9 @@ app.get("/api/movies", (req, res)=>{
     });
 })
 
-app.post("/api/movie",async(req,res)=>{
+app.post("/api/movie", async (req, res) => {
     try {
-        const {name, description, year, imdb} = req.body;
+        const { name, description, year, imdb } = req.body;
         const request = new mssql.Request();
 
         request.query(`INSERT INTO Movies (Name, Description, Year, Imdb) VALUES ('${name}', '${description}', '${year}', '${imdb}')`, (err, result) => {
@@ -45,11 +45,11 @@ app.post("/api/movie",async(req,res)=>{
         });
 
     } catch (error) {
-        
+
     }
 })
 
-app.delete("/api/movies/:id",(req,res)=>{
+app.delete("/api/movies/:id", (req, res) => {
     var movieId = parseInt(req.params.id);
     const request = new mssql.Request();
 
@@ -63,7 +63,26 @@ app.delete("/api/movies/:id",(req,res)=>{
     });
 })
 
+app.put("/api/movie/update/:id", (req, res) => {
 
-app.listen(3000,()=>{
+    const {name,description,year,imdb} = req.body;
+    const id = req.params.id
+    const request = new mssql.Request();
+    console.log(name);
+
+    // request.query(
+    //     `UPDATE Movies
+    //     SET sutun1 = yeni_deger1, sutun2 = yeni_deger2, ...
+    //     WHERE kosul;`
+    // )
+    //     .then((value) => {
+    //         console.log("Film Güncellendi...")
+    //         res.status(200).send("Film Başarıyla güncellendi...")
+    //     }).catch((err) => {
+    //         res.status
+    //     })
+})
+
+app.listen(3000, () => {
 
 })

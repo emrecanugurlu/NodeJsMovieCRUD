@@ -4,4 +4,8 @@ export class Movie {
   Description : string
   Imdb : string
   Year : string
+
 }
+
+
+

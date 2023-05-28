@@ -21,7 +21,7 @@
         <button id="deleteButton" type="button" class="btn btn-danger" style="margin-right: 10px" (click)="deleteMovieButtonClick()">
           <i class="bi bi-trash"></i>
         </button>
-        <button type="button" class="btn btn-warning">
+        <button type="button" class="btn btn-warning" (click)="updateMovieButton()">
           <i class="bi bi-pencil-fill"></i>
         </button>
       </td>
@@ -32,3 +32,4 @@
 
 <app-create></app-create>
 <app-delete (deleteModalClosed)="deleteModelClosed()"></app-delete>
+<app-update></app-update>

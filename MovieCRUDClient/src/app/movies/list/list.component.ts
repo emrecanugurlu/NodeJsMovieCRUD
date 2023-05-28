@@ -3,6 +3,7 @@ import {Movie} from "../../models/movie_model";
 import { DeleteComponent } from '../delete/delete.component';
 import { DataTransitionService } from 'src/app/services/data-transition.service';
 import { MovieService } from 'src/app/services/movie.service';
+import { UpdateComponent } from '../update/update.component';
 declare var $:any;
 
 @Component({
@@ -15,6 +16,7 @@ export class ListComponent implements OnInit{
   deletedMovieId : string;
   constructor(
     private deleteComponent: DeleteComponent,
+    private updateComponent : UpdateComponent,
      private dataTransition : DataTransitionService,
      private movieService : MovieService,
      ) {
@@ -42,11 +44,15 @@ export class ListComponent implements OnInit{
   }
 
   onRowClick(index){
-    this.dataTransition.deleteMovieId = this.movieList[index].Id.toString()
+    this.dataTransition.clickedMovie = this.movieList[index]
   }
 
   deleteModelClosed(){
     this.initialMovies();
+  }
+
+  updateMovieButton(){
+    this.updateComponent.openUpdateModal();
   }
 
 }

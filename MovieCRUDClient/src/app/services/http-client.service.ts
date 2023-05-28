@@ -21,5 +21,9 @@ export class HttpClientService {
   deleteMovie(id:string){
     return this.http.delete(`${this.urlService.baseUrl}/movies/${id}`);
   }
+
+  updateMovie({id,name,description,year,imdb}){
+    return this.http.put(`${this.urlService.baseUrl}/movie/update/${id}`,{name,description,year,imdb});
+  }
 }
 

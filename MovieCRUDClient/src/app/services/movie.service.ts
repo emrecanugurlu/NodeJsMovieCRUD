@@ -58,5 +58,18 @@ export class MovieService {
     })
   }
 
+  updateMovie({id,name,description,year,imdb}){
+    this.httpClientService.updateMovie(
+      {id,name,description,year,imdb}
+      ).subscribe({
+        next(value) {
+          console.log(value);
+        },
+        error(err) {
+          console.error(err);
+        },
+    })
+  }
+
 
 }
