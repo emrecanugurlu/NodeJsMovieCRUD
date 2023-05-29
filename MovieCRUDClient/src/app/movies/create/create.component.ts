@@ -27,10 +27,10 @@ export class CreateComponent {
 
     $("#SaveButton").html(`<div class="spinner-border spinner-border-sm" role="status"></div>`)
 
-    var movieName = $("#MovieForm #MovieName").val();
-    var movieDescription = $("#MovieForm #MovieDescription").val();
-    var movieYear = $("#MovieForm #MovieYear").val();
-    var movieImdb = $("#MovieForm #MovieImdb").val();
+    var movieName = $("#MovieCreateForm #MovieName").val();
+    var movieDescription = $("#MovieCreateForm #MovieDescription").val();
+    var movieYear = $("#MovieCreateForm #MovieYear").val();
+    var movieImdb = $("#MovieCreateForm #MovieImdb").val();
 
     this.movieService.postMovie(
       {

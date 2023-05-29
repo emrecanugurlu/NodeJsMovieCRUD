@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { ListComponent } from '../list/list.component';
-import { HttpClientService } from 'src/app/services/http-client.service';
+
 import { DataTransitionService } from 'src/app/services/data-transition.service';
 import { MovieService } from 'src/app/services/movie.service';
 declare var $:any;
@@ -18,8 +17,8 @@ export class DeleteComponent {
   closeDeleteModel(){
     $("#deleteModel").modal('hide')
     this.deleteModalClosed.emit();
-  
   }
+
   deleteMovieButtonClick(){
     $("#DeleteButton").html(`<div class="spinner-border spinner-border-sm" role="status"></div>`)
     this.movieService.deleteMovie(this.dataTransition.clickedMovie.Id.toString()).then((value) => {

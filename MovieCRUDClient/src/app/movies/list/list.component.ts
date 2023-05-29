@@ -12,7 +12,7 @@ declare var $:any;
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit{
-  movieList : Movie[];
+  public movieList : Movie[];
   deletedMovieId : string;
   constructor(
     private deleteComponent: DeleteComponent,
@@ -20,39 +20,40 @@ export class ListComponent implements OnInit{
      private dataTransition : DataTransitionService,
      private movieService : MovieService,
      ) {
+      
 
      
   }
   ngOnInit(): void {
+    
      this.initialMovies()
   }
 
-  deleteMovieButtonClick(){    
+  deleteMovieButtonClick(movie : Movie){    
+    this.dataTransition.clickedMovie = movie
     this.deleteComponent.openDeleteModal();
   }
 
   initialMovies(){
     this.movieService.getMovies().then((value) =>{
-      this.movieList = value as Movie[]
+      this.movieList=value
     }).catch((err) => {
       console.error(err);
     })
-  }
-
-  deleteMovie(){
-      
-  }
-
-  onRowClick(index){
-    this.dataTransition.clickedMovie = this.movieList[index]
   }
 
   deleteModelClosed(){
     this.initialMovies();
   }
 
-  updateMovieButton(){
+  updateMovieButton(movie : Movie){
+
+    this.dataTransition.clickedMovie = movie
     this.updateComponent.openUpdateModal();
+  }
+
+  updateModalClosed(){
+    this.initialMovies();
   }
 
 }

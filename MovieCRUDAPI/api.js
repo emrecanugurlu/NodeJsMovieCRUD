@@ -68,19 +68,17 @@ app.put("/api/movie/update/:id", (req, res) => {
     const {name,description,year,imdb} = req.body;
     const id = req.params.id
     const request = new mssql.Request();
-    console.log(name);
-
-    // request.query(
-    //     `UPDATE Movies
-    //     SET sutun1 = yeni_deger1, sutun2 = yeni_deger2, ...
-    //     WHERE kosul;`
-    // )
-    //     .then((value) => {
-    //         console.log("Film Güncellendi...")
-    //         res.status(200).send("Film Başarıyla güncellendi...")
-    //     }).catch((err) => {
-    //         res.status
-    //     })
+    request.query(
+        `UPDATE Movies 
+        SET Name = '${name}', Description = '${description}', Year = '${year}', Imdb = '${imdb}'
+        WHERE id = ${id}`
+    )
+        .then((value) => {
+            console.log("Film Güncellendi...")
+            res.status(200).send("Film Başarıyla güncellendi...")
+        }).catch((err) => {
+            res.status
+        })
 })
 
 app.listen(3000, () => {

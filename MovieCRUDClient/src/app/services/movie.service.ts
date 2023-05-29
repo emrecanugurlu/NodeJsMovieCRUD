@@ -9,7 +9,7 @@ export class MovieService {
 
   constructor(private httpClientService: HttpClientService) { }
 
-  getMovies() {
+  getMovies() : Promise<Movie[]>{
     return new Promise((resolve, reject) => {
       this.httpClientService.getMovies().subscribe({
         error: (err) => {
