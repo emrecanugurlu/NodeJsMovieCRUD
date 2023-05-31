@@ -1,8 +1,8 @@
 export class Movie {
-  public Id : number
-  public Name : string
-  public Description : string
-  public Year : string
-  public Imdb : string
+  public id : number
+  public name : string
+  public description : string
+  public year : string
+  public imdb : string
 }
 

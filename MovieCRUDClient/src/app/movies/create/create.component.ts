@@ -39,6 +39,7 @@ export class CreateComponent {
         imdb : movieImdb,
         year : movieYear
       }).then((value)=>{
+        console.log(value)
         this.listComponent.initialMovies();
         this.closeCreateModel()
         $("#SaveButton").text(`Save`)

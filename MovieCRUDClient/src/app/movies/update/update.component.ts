@@ -20,10 +20,10 @@ export class UpdateComponent {
   openUpdateModal() {
 
     $("#updateModal").modal('show');
-    $("#updateMovieName").val(this.dataTransition.clickedMovie.Name)
-    $("#updateMovieDescription").val(this.dataTransition.clickedMovie.Description)
-    $("#updateMovieYear").val(this.dataTransition.clickedMovie.Year)
-    $("#updateMovieImdb").val(this.dataTransition.clickedMovie.Imdb)
+    $("#updateMovieName").val(this.dataTransition.clickedMovie.name)
+    $("#updateMovieDescription").val(this.dataTransition.clickedMovie.description)
+    $("#updateMovieYear").val(this.dataTransition.clickedMovie.year)
+    $("#updateMovieImdb").val(this.dataTransition.clickedMovie.imdb)
   }
 
 
@@ -34,7 +34,7 @@ export class UpdateComponent {
 
   updateMovie() {
 
-    var updatedMovieId = this.dataTransition.clickedMovie.Id
+    var updatedMovieId = this.dataTransition.clickedMovie.id
     var updatedMovieName = $("#updateMovieName").val()
     var updatedMovieDescription = $("#updateMovieDescription").val()
     var updatedMovieYear = $("#updateMovieYear").val()

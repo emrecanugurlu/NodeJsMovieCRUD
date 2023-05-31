@@ -21,7 +21,8 @@ export class DeleteComponent {
 
   deleteMovieButtonClick(){
     $("#DeleteButton").html(`<div class="spinner-border spinner-border-sm" role="status"></div>`)
-    this.movieService.deleteMovie(this.dataTransition.clickedMovie.Id.toString()).then((value) => {
+    this.movieService.deleteMovie(this.dataTransition.clickedMovie.id.toString()).then((value) => {
+      console.log(value)
       this.closeDeleteModel();
       $("#DeleteButton").text("Yes");
     }).catch((err) => {

@@ -24,8 +24,15 @@ export class ListComponent implements OnInit{
 
      
   }
+
+  deneme(){
+    $(".alert").fadeIn()
+  }
+  deneme2(){
+    $(".alert").fadeOut()
+  }
+
   ngOnInit(): void {
-    
      this.initialMovies()
   }
 

@@ -1,7 +1,8 @@
 const express = require('express')
 const mssql = require('mssql')
-const dbConfig = require('./db_config')
 const cors = require('cors')
+const db = require('./models');
+
 
 const app = express();
 app.use(express.json());
@@ -18,67 +19,63 @@ mssql.connect(dbConfig, (err) => {
 });
 
 app.get("/api/movies", (req, res) => {
-    const request = new mssql.Request();
 
-    request.query('SELECT * FROM Movies', (err, result) => {
-        if (err) {
-            console.log('Kayıtlar getirilirken bir hata oluştu:', err);
-            res.status(500).send('Kayıtlar getirilirken bir hata oluştu.');
-        } else {
-            res.send(result.recordset);
-        }
-    });
+    db.Movie.findAll()
+        .then(movies => {
+            res.send(movies)
+        })
 })
 
 app.post("/api/movie", async (req, res) => {
-    try {
-        const { name, description, year, imdb } = req.body;
-        const request = new mssql.Request();
 
-        request.query(`INSERT INTO Movies (Name, Description, Year, Imdb) VALUES ('${name}', '${description}', '${year}', '${imdb}')`, (err, result) => {
-            if (err) {
-                console.log('Kayıtlar getirilirken bir hata oluştu:', err);
-                res.status(500).send('Kayıtlar getirilirken bir hata oluştu.');
-            } else {
-                res.send("true");
-            }
-        });
+    const { name, description, year, imdb } = req.body;
+    db.Movie.create({
+        name: name,
+        description: description,
+        year: year,
+        imdb: imdb
+    }).then(movie => {
+        res.send({ message: `${name} başarıyla eklendi.` })
+    }).catch(error => {
+        res.send(error)
+    })
 
-    } catch (error) {
-
-    }
 })
 
 app.delete("/api/movies/:id", (req, res) => {
     var movieId = parseInt(req.params.id);
-    const request = new mssql.Request();
 
-    request.query(`DELETE FROM Movies WHERE id = ${movieId};`, (err, result) => {
-        if (err) {
-            console.log('Film silinirken hata oluştu', err);
-            res.status(500).send('Film silinirken hata oluştu');
-        } else {
-            res.send("true");
+    db.Movie.destroy({
+        where: {
+            id: movieId
         }
-    });
+    }).then(() => {
+        res.send({ message: `Silme işlemi başarıyla gerçekleştirildi.` })
+    }).catch(err => {
+        res.send(err)
+    })
 })
 
 app.put("/api/movie/update/:id", (req, res) => {
 
-    const {name,description,year,imdb} = req.body;
+    const { name, description, year, imdb } = req.body;
     const id = req.params.id
-    const request = new mssql.Request();
-    request.query(
-        `UPDATE Movies 
-        SET Name = '${name}', Description = '${description}', Year = '${year}', Imdb = '${imdb}'
-        WHERE id = ${id}`
-    )
-        .then((value) => {
-            console.log("Film Güncellendi...")
-            res.status(200).send("Film Başarıyla güncellendi...")
-        }).catch((err) => {
-            res.status
-        })
+
+    db.Movie.update({
+        name: name,
+        description: description,
+        year: year,
+        imdb: imdb
+    },{
+        where : {
+            id : id
+        }
+    }).then(()=>{
+        res.send({message : "Güncelleme işlemi başarıyla gerçekleştirildi."})
+    }).catch(err =>{
+        res.send(err)
+    })
+
 })
 
 app.listen(3000, () => {

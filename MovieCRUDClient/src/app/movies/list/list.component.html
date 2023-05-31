@@ -1,4 +1,5 @@
-<div style="margin: 30px 100px 0 100px">
+
+<div style="margin: 30px 150px 0 150px">
   <table class="table table-bordered">
     <thead>
     <tr>
@@ -12,12 +13,12 @@
     </thead>
     <tbody>
     <tr *ngFor="let movie of movieList">
-      <th scope="row">{{movie.Id}}</th>
-      <td>{{movie.Name}}</td>
-      <td>{{movie.Description}}</td>
-      <td>{{movie.Year}}</td>
-      <td>{{movie.Imdb}}</td>
-      <td class="col-sm-1">
+      <th scope="row">{{movie.id}}</th>
+      <td>{{movie.name}}</td>
+      <td>{{movie.description}}</td>
+      <td>{{movie.year}}</td>
+      <td>{{movie.imdb}}</td>
+      <td class="col-sm-2">
         <button id="deleteButton" type="button" class="btn btn-danger" style="margin-right: 10px" (click)="deleteMovieButtonClick(movie)">
           <i class="bi bi-trash"></i>
         </button>
