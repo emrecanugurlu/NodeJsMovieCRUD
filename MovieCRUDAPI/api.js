@@ -10,13 +10,6 @@ app.use(cors({
     origin: 'http://localhost:4200'
 }));
 
-mssql.connect(dbConfig, (err) => {
-    if (err) {
-        console.log('SQL Server bağlantısı başarısız oldu:', err);
-    } else {
-        console.log('SQL Server bağlantısı başarılı.');
-    }
-});
 
 app.get("/api/movies", (req, res) => {
 
@@ -35,7 +28,7 @@ app.post("/api/movie", async (req, res) => {
         year: year,
         imdb: imdb
     }).then(movie => {
-        res.send({ message: `${name} başarıyla eklendi.` })
+        res.send({ message: `${movie.name} başarıyla eklendi.` })
     }).catch(error => {
         res.send(error)
     })

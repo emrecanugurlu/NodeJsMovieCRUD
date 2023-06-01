@@ -7,29 +7,29 @@
         <div class="modal-body">
             <form id="MovieUpdateForm">
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Movie Name</label>
+                  <label for="exampleInputEmail1"><b>Movie Name:</b></label>
                   <input type="text" class="form-control" id="updateMovieName"  placeholder="Movie Name">
                 </div>
              
                 <div class="form-group">
-                  <label for="exampleInputPassword1">Description</label>
+                  <label for="exampleInputPassword1"><b>Description:</b></label>
                   <input type="text" class="form-control" id="updateMovieDescription" placeholder="Description" >
                 </div>
         
                 <div class="form-group">
-                    <label for="exampleInputPassword1">Year</label>
+                    <label for="exampleInputPassword1"><b>Year:</b></label>
                     <input type="text" class="form-control" id="updateMovieYear" placeholder="Year">
                 </div>
              
                 <div class="form-group">
-                    <label for="exampleInputPassword1">Imdb</label>
+                    <label for="exampleInputPassword1"><b>Imdb:</b></label>
                     <input type="text" class="form-control" id="updateMovieImdb" placeholder="Imdb">
                 </div>
               </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeUpdateModal()">Close</button>
-          <button type="button" class="btn btn-primary" id="UpdateButton" (click)="updateMovie()">
+          <button type="button" class="btn btn-warning" id="UpdateButton" (click)="updateMovie()">
             Update 
           </button>
         </div>

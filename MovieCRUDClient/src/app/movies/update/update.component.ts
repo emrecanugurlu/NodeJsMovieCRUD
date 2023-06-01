@@ -34,6 +34,8 @@ export class UpdateComponent {
 
   updateMovie() {
 
+    $("#UpdateButton").html(`<div class="spinner-border spinner-border-sm" role="status"></div>`)
+
     var updatedMovieId = this.dataTransition.clickedMovie.id
     var updatedMovieName = $("#updateMovieName").val()
     var updatedMovieDescription = $("#updateMovieDescription").val()
@@ -47,10 +49,14 @@ export class UpdateComponent {
         description: updatedMovieDescription,
         year: updatedMovieYear,
         imdb: updatedMovieImdb
+      }).then(value =>{
+        $("#UpdateButton").text(`Save`)
+        console.log(value)
+        this.closeUpdateModal()
+      }).catch(err =>{
+        $("#UpdateButton").text(`Save`)
+        console.log(err)
       })
-
-      this.closeUpdateModal()
-
   }
 
 }
