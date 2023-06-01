@@ -15,7 +15,7 @@ export class HttpClientService {
   }
 
   postMovie({name,description,year,imdb}){
-    return this.http.post(`${this.urlService.baseUrl}/movie`, {name , description, year, imdb});
+    return this.http.post(`${this.urlService.baseUrl}/movies`, {name , description, year, imdb});
   }
 
   deleteMovie(id:string){
@@ -23,7 +23,7 @@ export class HttpClientService {
   }
 
   updateMovie({id,name,description,year,imdb}){
-    return this.http.put(`${this.urlService.baseUrl}/movie/update/${id}`,{name,description,year,imdb});
+    return this.http.put(`${this.urlService.baseUrl}/movies/${id}`,{name,description,year,imdb});
   }
 }
 

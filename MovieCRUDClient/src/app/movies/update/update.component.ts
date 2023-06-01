@@ -1,5 +1,4 @@
-import { AfterViewInit, Component, EventEmitter, Output } from '@angular/core';
-import { Movie } from 'src/app/models/movie_model';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { DataTransitionService } from 'src/app/services/data-transition.service';
 import { MovieService } from 'src/app/services/movie.service';
 declare var $: any;

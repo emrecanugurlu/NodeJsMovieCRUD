@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-
 import { DataTransitionService } from 'src/app/services/data-transition.service';
 import { MovieService } from 'src/app/services/movie.service';
 declare var $:any;

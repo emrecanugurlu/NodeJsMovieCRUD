@@ -19,7 +19,7 @@ app.get("/api/movies", (req, res) => {
         })
 })
 
-app.post("/api/movie", async (req, res) => {
+app.post("/api/movies", async (req, res) => {
 
     const { name, description, year, imdb } = req.body;
     db.Movie.create({
@@ -49,7 +49,7 @@ app.delete("/api/movies/:id", (req, res) => {
     })
 })
 
-app.put("/api/movie/update/:id", (req, res) => {
+app.put("/api/movies/:id", (req, res) => {
 
     const { name, description, year, imdb } = req.body;
     const id = req.params.id
